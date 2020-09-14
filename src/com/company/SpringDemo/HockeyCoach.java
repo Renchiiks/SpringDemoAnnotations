@@ -1,6 +1,7 @@
 package com.company.SpringDemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component("hockeyCoach")
@@ -12,7 +13,7 @@ public class HockeyCoach implements Coach {
     }
 
     @Autowired
-    public void setFortuneService(FortuneService fortuneService) {
+    public void setFortuneService(@Qualifier("happyFortuneService") FortuneService fortuneService) {
         System.out.println("HockeyCoach setter method");
         this.fortuneService = fortuneService;
     }
@@ -24,12 +25,12 @@ public class HockeyCoach implements Coach {
 
     @Override
     public String getDailyFortune() {
-        return "This is your lucky day" + fortuneService.getFortune();
+        return "Hockey Coach: " + fortuneService.getFortune();
     }
 
     @Autowired
-    public void doSomething(FortuneService fortuneService) {
-        System.out.println("TennisCoach: doSomething Method");
+    public void doSomething(@Qualifier("happyFortuneService") FortuneService fortuneService) {
+        System.out.println("TennisCoach: doSomething Method ");
 
     }
 }

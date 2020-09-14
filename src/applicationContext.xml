@@ -8,8 +8,10 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- add entry to enable component scanning-->
-
     <context:component-scan base-package="com.company.SpringDemo"/>
+
+    <!-- add random fortunes from file-->
+    <context:property-placeholder location="classpath:sport.properties"/>
 </beans>
 
 
